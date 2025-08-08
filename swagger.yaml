@@ -1,0 +1,37 @@
+openapi: 3.0.3
+info:
+  title: Mini Streaming Platform API
+  description: API for managing video fragments in a distributed streaming platform.
+  version: 1.0.0
+servers:
+  - url: http://localhost:5001
+    description: Fragment Manager 1
+  - url: http://localhost:5002
+    description: Fragment Manager 2
+paths:
+  /fragments:
+    get:
+      summary: List available video fragments
+      description: Retrieves a list of video fragment files (with .bin extension) stored in the fragments directory.
+      operationId: listFragments
+      responses:
+        '200':
+          description: Successful response with a list of fragment filenames
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example: ["fragment_0.bin", "fragment_1.bin", "fragment_2.bin"]
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                example:
+                  error: "Internal server error"

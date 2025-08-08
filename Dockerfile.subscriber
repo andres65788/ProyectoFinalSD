@@ -1,0 +1,6 @@
+# Dockerfile para subscriber
+FROM python:3.10-slim
+
+WORKDIR /app
+COPY subscriber.py ./
+CMD ["python", "subscriber.py"]

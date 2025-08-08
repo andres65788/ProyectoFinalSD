@@ -1,0 +1,7 @@
+# Dockerfile para broker
+FROM python:3.10-slim
+
+WORKDIR /app
+COPY broker.py ./
+EXPOSE 14000
+CMD ["python", "broker.py"]
